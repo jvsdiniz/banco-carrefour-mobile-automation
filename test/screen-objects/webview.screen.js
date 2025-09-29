@@ -3,7 +3,7 @@ import { assert } from 'chai';
 class WebviewScreen {
 
     get acessarPaginaWebview() { return $('~Webview') }
-    get fecharAvisoSuperior() { return $('android=new UiSelector().text("Close")') }
+    get fecharAvisoSuperior() { return $('//android.widget.Button[@text="Close"]') }
     get iconeWebdriver() { return $('android=new UiSelector().text("WebdriverIO")') }
     get tituloWebview() { return $('android=new UiSelector().text("Next-gen browser and mobile automation test framework for Node.js")') }
     get menuHamburguer() { return $('android=new UiSelector().text("Toggle navigation bar")') }

@@ -1,6 +1,6 @@
 # 🔵 Desafio Técnico - Banco Carrefour | Mobile 
 
-Este repositório tem como objetivo demonstrar automações aplicadas em dispositivos mobile com o app nativo do framework WebdriverIO https://github.com/webdriverio/native-demo-app/releases através de scripts automatizados, são realizados testes que validam comportamentos esperados e cenários diversos.
+Este repositório tem como objetivo demonstrar automações aplicadas em dispositivos mobile com o [app do framework WebdriverIO](https://github.com/webdriverio/native-demo-app/releases) através de scripts automatizados, são realizados testes que validam comportamentos esperados e cenários diversos.
 
 ## 🛠️ Tecnologias e bibliotecas utilizadas
 
@@ -10,7 +10,7 @@ Este repositório tem como objetivo demonstrar automações aplicadas em disposi
 - **`@wdio/browserstack-service`** - Integração com o BrowserStack, essencial para o CI/CD.
 - **`@wdio/local-runner	`** - Para os testes locais.
 - **`@wdio/mocha-framework`** - Estruturação e organização dos cenários de teste.
-- **`[Chai](https://www.chaijs.com/)`** - Para validações nos testes.
+- **[Chai](https://www.chaijs.com/)** - Para validações nos testes.
 - **`@wdio/spec-reporter`** - Reporter padrão.
 
 ## 💻 Pré-requisitos
@@ -140,7 +140,6 @@ BANCO-CARREFOUR-MOBILE-AUTOMATION/
 │   ├── screen-objects/          # Implementação do Padrão Screen Object (POM)
 │   └── specs/                   # Arquivos de especificação (casos de teste)
 ├── .gitignore                 # Arquivos e pastas a serem ignorados pelo Git
-├── allure-results/            # Resultados brutos do Allure Reporter
 ├── package.json               # Configuração do projeto e scripts
 ├── package-lock.json        # Versões exatas das dependências
 ├── README.md                # Documentação do projeto
@@ -153,7 +152,7 @@ Os casos de teste automatizados neste projeto foram desenvolvidos com um duplo p
 
 Demonstrar a Funcionalidade Crítica do Aplicativo (Happy Path): A suíte de testes cobre as principais interações e fluxos do aplicativo, como login, navegação na tela principal e interação com formulários. O foco é validar o que o aplicativo faz de mais importante, garantindo que o "caminho feliz" do usuário esteja sempre funcional.
 
-Exibir o Conhecimento e as Melhores Práticas de Automação: Além de testar o app, a estrutura do projeto serve como um portfólio técnico, demonstrando a aplicação de conhecimentos avançados em automação mobile, incluindo:
+Exibir o Conhecimento e as Melhores Práticas de Automação: Além de testar o app, a estrutura do projeto serve como um demonstrativo de conhecimentos em automação mobile, incluindo:
 
 - Implementação do Padrão Screen Object (Page Object Model) para código limpo e de fácil manutenção.
 - Uso de seletores específicos de plataforma (UiSelector) para Android.
