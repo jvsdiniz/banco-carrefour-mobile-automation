@@ -1,0 +1,8 @@
+/node_modules
+/logs
+/allure-results
+/allure-report
+/screenshots
+*.log
+.wdio-log
+.selenium-ide-project
