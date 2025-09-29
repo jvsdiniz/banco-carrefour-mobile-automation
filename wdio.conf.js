@@ -16,8 +16,13 @@ exports.config = {
         'appium:deviceName': 'Pixel 4',
         'appium:platformVersion': '12.0',
         'appium:automationName': 'UiAutomator2',
-        'appium:app': path.join(process.cwd(), './app/android/native-demo-app.apk'),
-        'appium:newCommandTimeout': 120000 
+        // # DESCOMENTE PARA USAR LOCALMENTE \/
+        //'appium:app': path.join(process.cwd(), './app/android/native-demo-app.apk'),
+
+        // # DESCOMENTE PARA RODAR NO CI/CD
+        'appium:appPackage': 'com.wdiodemoapp', //
+        'appium:appActivity': 'com.wdiodemoapp.MainActivity', //
+        'appium:newCommandTimeout': 120000
     }],
     logLevel: 'info',
     bail: 0,
@@ -30,8 +35,8 @@ exports.config = {
             args: {
                 // Estas são opções passadas para o comando 'appium' 
                 // que o serviço irá executar.
-                address: 'localhost', 
-                port: 4723 
+                address: 'localhost',
+                port: 4723
             },
             // logPath: './' // Opcional, descomente se quiser logs do Appium
         }]
