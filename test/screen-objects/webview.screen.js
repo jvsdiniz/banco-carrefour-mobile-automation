@@ -15,6 +15,11 @@ class WebviewScreen {
         await this.segundaOpcaoParaClicar.click();
     }
 
+    async aguardarEFecharAvisoSuperior(){
+        await this.fecharAvisoSuperior.waitForDisplayed({ timeout: 10000 });
+        await this.fecharAvisoSuperior.click(); 
+    }
+
 
 }
 export default WebviewScreen

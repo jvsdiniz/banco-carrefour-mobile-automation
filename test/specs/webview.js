@@ -7,7 +7,7 @@ describe('Cenário: Interação e Navegação na WebView', () => {
 
     it('Sucesso - Deve fechar o aviso superior, navegar para "Why WebdriverIO?" e validar o título', async () => {
         await webviewScreen.acessarPaginaWebview.click();
-        await webviewScreen.fecharAvisoSuperior.click();
+        await webviewScreen.aguardarEFecharAvisoSuperior();
         await webviewScreen.acessarPaginaWhyWebdriverIO();
 
         const tituloEsperado = "Why Webdriver.IO?";
