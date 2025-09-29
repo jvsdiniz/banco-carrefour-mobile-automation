@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4 
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install Dependencies
         run: npm install
@@ -28,10 +28,10 @@ jobs:
         with:
           api-level: 28
           target: google_apis
-          arch: x86_64
+          arch: x86
           profile: Nexus 6
-          emulator-boot-timeout: 15m 
-          emulator-options: "-no-window -gpu off"   
+          emulator-boot-timeout: 20m 
+          emulator-options: "-no-window -no-snapshot-load -no-snapshot-save -gpu off"   
           
           script: |
             echo "Instalando Appium e aguardando servidor..."
