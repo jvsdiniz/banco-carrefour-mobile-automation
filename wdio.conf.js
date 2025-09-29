@@ -31,8 +31,6 @@ exports.config = {
         // # DESCOMENTE PARA RODAR NO BROWSERSTACK
         {
             platformName: 'Android', //
-            'browserstack.deviceName': 'Google Pixel 5', //
-            'browserstack.platformVersion': '11.0', //
             'appium:app': 'bs://80e77493094dd136e5343fd99d5e0445301bee25', //
             'bstack:options': { //
                 deviceName: 'Google Pixel 5', //
