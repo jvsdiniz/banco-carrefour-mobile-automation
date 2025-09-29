@@ -6,9 +6,11 @@ exports.config = {
     runner: 'local',
     // # DESCOMENTE PARA RODAR LOCALMENTE \/
     // hostname: '127.0.0.1',
+
     // # DESCOMENTE PARA RODAR NO BROWSERSTACK \/
-    hostname: 'hub.browserstack.com',
-    port: 4723,
+    hostname: 'hub.browserstack.com', //
+    // # DESCOMENTE PARA RODAR LOCALMENTE \/
+    //port: 4723,
     specs: [
         './test/specs/**/*.js'
     ],
