@@ -29,9 +29,10 @@ jobs:
           api-level: 28
           target: default
           arch: x86
-          profile: Nexus 6
+          profile: pixel_3a
+          ram-size: 1024M 
           emulator-boot-timeout: 20m 
-          emulator-options: "-no-window -no-snapshot-load -no-snapshot-save -gpu off"   
+          emulator-options: "-no-window -no-snapshot-load -no-snapshot-save -gpu off -no-audio"   
           
           script: |
             echo "Instalando Appium e aguardando servidor..."
