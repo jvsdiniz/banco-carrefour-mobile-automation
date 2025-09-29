@@ -30,14 +30,14 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: Nexus 6
-          adb-wait-time: 10 
+          emulator-boot-timeout: 10m  
           
           script: |
             echo "Instalando Appium e aguardando servidor..."
             npm install -g appium 
             appium --base-path /wd/hub &
             sleep 15      
-                 
+
             echo "Aguardando o dispositivo ficar pronto para comandos..."
             adb wait-for-device
            
