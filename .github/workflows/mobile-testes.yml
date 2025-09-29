@@ -1,50 +1,50 @@
-name: Mobile E2E Tests (Android Local Runner)
+name: Mobile E2E Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
-  workflow_dispatch:
+    branches: [main, develop]
+  workflow_dispatch: 
 
 jobs:
-  run-android-tests:
-    runs-on: ubuntu-latest 
+  test:
+    runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Code
+      - name: ⬇️ Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4 
+      - name: 🐢 Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: 🏗️ Install Dependencies
+        run: npm ci
 
-      - name: Setup Android Emulator and Run Tests
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: 🤖 Run BrowserStack Android Tests
+        run: npx wdio
+        env:
+          BROWSERSTACK_USER: 'joodiniz_ePTOD0'
+          BROWSERSTACK_KEY: 's6euYBBkKnyzXoLjyNsU'
+          BROWSERSTACK_APP: 'bs://80e77493094dd136e5343fd99d5e0445301bee25'
+
+      - name: 📦 Upload Test Logs
+        uses: actions/upload-artifact@v4
+        if: failure()
         with:
-          api-level: 28
-          target: default
-          arch: x86
-          profile: pixel_3a
-          ram-size: 1024M 
-          emulator-boot-timeout: 20m 
-          emulator-options: "-no-window -no-snapshot-load -no-snapshot-save -gpu off -no-audio"   
-          
-          script: |
-            echo "Instalando Appium e aguardando servidor..."
-            npm install -g appium 
-            appium --base-path /wd/hub &
-            sleep 15      
+          name: browserstack-test-logs-${{ github.run_id }}
+          path: |
+            logs/
+            *.log
+          retention-days: 30
 
-            echo "Aguardando o dispositivo ficar pronto para comandos..."
-            adb wait-for-device
-           
-            echo "Instalando APK no emulador..."
-            adb install ./app/android/native-demo-app.apk
-
-            echo "Iniciando a execução dos testes WebdriverIO..."
-            npx wdio run wdio.conf.js
+      - name: 📊 Upload BrowserStack Performance Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browserstack-performance-report-${{ github.run_id }}
+          path: logs/performance-report/
+          retention-days: 30

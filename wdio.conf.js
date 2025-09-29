@@ -1,7 +1,13 @@
 const path = require('path');
 exports.config = {
+    // # DESCOMENTE PARA RODAR NO BROWSERSTACK \/
+    user: 'joodiniz_ePTOD0', //
+    key: 's6euYBBkKnyzXoLjyNsU', //
     runner: 'local',
-    hostname: '127.0.0.1',
+    // # DESCOMENTE PARA RODAR LOCALMENTE \/
+    // hostname: '127.0.0.1',
+    // # DESCOMENTE PARA RODAR NO BROWSERSTACK \/
+    hostname: 'hub.browserstack.com',
     port: 4723,
     specs: [
         './test/specs/**/*.js'
@@ -11,36 +17,44 @@ exports.config = {
     ],
 
     maxInstances: 1,
-    capabilities: [{
-        platformName: 'Android',
-        'appium:deviceName': 'Pixel 4',
-        'appium:platformVersion': '12.0',
-        'appium:automationName': 'UiAutomator2',
+    capabilities: [
         // # DESCOMENTE PARA USAR LOCALMENTE \/
-        //'appium:app': path.join(process.cwd(), './app/android/native-demo-app.apk'),
+        //     {
+        //     platformName: 'Android',
+        //     'appium:deviceName': 'Pixel 4',
+        //     'appium:platformVersion': '12.0',
+        //     'appium:automationName': 'UiAutomator2',
+        //     'appium:app': path.join(process.cwd(), './app/android/native-demo-app.apk'),        
+        //     'appium:newCommandTimeout': 120000
+        // },
 
-        // # DESCOMENTE PARA RODAR NO CI/CD
-        'appium:appPackage': 'com.wdiodemoapp', //
-        'appium:appActivity': 'com.wdiodemoapp.MainActivity', //
-        'appium:newCommandTimeout': 120000
-    }],
+        // # DESCOMENTE PARA RODAR NO BROWSERSTACK
+        {
+            platformName: 'Android', //
+            'browserstack.deviceName': 'Google Pixel 5', //
+            'browserstack.platformVersion': '11.0', //
+            'appium:app': 'bs://80e77493094dd136e5343fd99d5e0445301bee25', //
+            'bstack:options': { //
+                deviceName: 'Google Pixel 5', //
+                platformVersion: '11.0', //
+                projectName: 'Projeto Mobile CI/CD', //
+                buildName: 'Mobile E2E Build', //
+                sessionName: 'Testes Automatizados - Android', //
+            } //
+        }],
     logLevel: 'info',
     bail: 0,
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: [
-        // Esta é a forma correta de passar opções para um serviço
-        ['appium', {
-            args: {
-                // Estas são opções passadas para o comando 'appium' 
-                // que o serviço irá executar.
-                address: 'localhost',
-                port: 4723
-            },
-            // logPath: './' // Opcional, descomente se quiser logs do Appium
-        }]
-    ],
+    services:
+        [
+            // # DESCOMENTE PARA RODAR LOCALMENTE \/
+            // ['appium', { args: {address: 'localhost',port: 4723},}]
+
+            // # DESCOMENTE PARA RODAR NO BROWSERSTACK \/
+            ['browserstack']
+        ],
     framework: 'mocha',
     reporters: ['spec'],
     mochaOpts: {
