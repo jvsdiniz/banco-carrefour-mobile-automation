@@ -27,7 +27,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 28
-          target: google_apis
+          target: default
           arch: x86
           profile: Nexus 6
           emulator-boot-timeout: 20m 
